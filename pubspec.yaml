@@ -1,0 +1,33 @@
+name: IceCream
+description: 夏天到了当然要吃冰激凌
+
+publish_to: 'none'
+
+version: 3.0.0
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.5
+
+  flutter_waff: ^3.0.0
+
+  get: ^4.6.5
+  path_provider: ^2.0.10
+  shared_preferences: ^2.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: app_icons
+      fonts:
+        - asset: assets/fonts/app_icons.ttf
