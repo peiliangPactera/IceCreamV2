@@ -13,18 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 下载 Flutter 3.0.0 SDK（Linux 示例）
-      - name: Download Flutter 3.0.0
-      - run: |
+      # 下载并安装 Flutter 3.0.0 SDK
+      - name: Install Flutter 3.0.0
+        run: |
           wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz
           tar xf flutter_linux_3.0.0-stable.tar.xz
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
-
-      # 验证安装
-      - name: Check Flutter Version
-      - run: flutter --version
-      - run: flutter pub get
-      - run: flutter test
+          flutter --version
 
       # 安装依赖
       - name: Install dependencies
@@ -38,6 +33,8 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      # （可选）构建 APK/IPA
+      # （可选）构建 APK
       # - name: Build APK
-      #   run: flutter build apk --release
+      #   run: |
+      #     flutter build apk --release
+      #     ls -la build/app/outputs/flutter-apk/
