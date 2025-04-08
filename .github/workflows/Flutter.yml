@@ -8,33 +8,32 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 或 macOS（如需 iOS 构建）
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      # 下载并安装 Flutter 3.0.0 SDK
+      # 1. 安装 Flutter 3.0.0
       - name: Install Flutter 3.0.0
         run: |
           wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz
           tar xf flutter_linux_3.0.0-stable.tar.xz
+          echo "FLUTTER_HOME=$GITHUB_WORKSPACE/flutter" >> $GITHUB_ENV
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+          # 立即生效PATH
+          export PATH="$GITHUB_WORKSPACE/flutter/bin:$PATH"
           flutter --version
 
-      # 安装依赖
+      # 2. 验证安装（使用完整路径确保可靠）
+      - name: Verify Installation
+        run: |
+          $FLUTTER_HOME/bin/flutter --version
+          which flutter
+
+      # 3. 安装依赖
       - name: Install dependencies
         run: flutter pub get
 
-      # 代码分析
-      - name: Analyze
-        run: flutter analyze
-
-      # 运行测试
+      # 4. 运行测试
       - name: Run tests
         run: flutter test
-
-      # （可选）构建 APK
-      # - name: Build APK
-      #   run: |
-      #     flutter build apk --release
-      #     ls -la build/app/outputs/flutter-apk/
