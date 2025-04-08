@@ -15,11 +15,11 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.5
 
-  flutter_waff: ^3.0.0
+#  flutter_waff: ^3.0.0
 
   get: ^4.6.5
   path_provider: ^2.0.10
-  shared_preferences: ^2.0.15
+#  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
