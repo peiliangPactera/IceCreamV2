@@ -15,7 +15,7 @@ jobs:
 
       # 下载 Flutter 3.0.0 SDK（Linux 示例）
       - name: Download Flutter 3.0.0
-        run: |
+      - run: |
           wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz
           tar xf flutter_linux_3.0.0-stable.tar.xz
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
