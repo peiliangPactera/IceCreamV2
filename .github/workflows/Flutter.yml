@@ -13,10 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 安装 Flutter SDK
-      - uses: fluttertools/setup-flutter@v2
+      # 安装 Flutter 3.0.0
+      - uses: fluttertools/setup-flutter@v3
         with:
-          channel: 'stable'
+          flutter-version: '3.0.0'  # 直接指定版本号
+
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter test
 
       # 安装依赖
       - name: Install dependencies
