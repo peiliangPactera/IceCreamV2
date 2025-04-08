@@ -1,0 +1,35 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 或 macOS（如需 iOS 构建）
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 安装 Flutter SDK
+      - uses: fluttertools/setup-flutter@v2
+        with:
+          channel: 'stable'
+
+      # 安装依赖
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 代码分析
+      - name: Analyze
+        run: flutter analyze
+
+      # 运行测试
+      - name: Run tests
+        run: flutter test
+
+      # （可选）构建 APK/IPA
+      # - name: Build APK
+      #   run: flutter build apk --release
