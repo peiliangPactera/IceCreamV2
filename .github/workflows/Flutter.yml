@@ -8,20 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: slave-l1
+    
     steps:
       - uses: actions/checkout@v4
 
       # 1. 安装 Flutter 3.0.0
       - name: Install Flutter 3.0.0
         run: |
-          wget -q https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz
-          tar xf flutter_linux_3.0.0-stable.tar.xz
-          echo "FLUTTER_HOME=$GITHUB_WORKSPACE/flutter" >> $GITHUB_ENV
-          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
-          # 立即生效PATH
-          export PATH="$GITHUB_WORKSPACE/flutter/bin:$PATH"
           flutter --version
 
       # 2. 验证安装（使用完整路径确保可靠）
