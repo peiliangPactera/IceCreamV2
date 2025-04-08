@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: slave-l1
-    
+
     steps:
       - uses: actions/checkout@v4
 
@@ -21,7 +21,7 @@ jobs:
       # 2. 验证安装（使用完整路径确保可靠）
       - name: Verify Installation
         run: |
-          $FLUTTER_HOME/bin/flutter --version
+          flutter --version
           which flutter
 
       # 3. 安装依赖
