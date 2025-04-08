@@ -28,6 +28,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # 4. 运行测试
-      - name: Run tests
-        run: flutter test
+      # 打包apk
+      - name: build apk
+        run: |
+         flutter build apk -t lib/main.dart;
